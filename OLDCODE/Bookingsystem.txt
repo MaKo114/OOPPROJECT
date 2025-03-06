@@ -1,0 +1,142 @@
+from Bookingsystem import Bookingsystem
+from User import User
+from Station import Station
+from Route import Route
+from Train import Train
+from Carriage import Carriage
+from Seat import Seat
+from datetime import date, timedelta
+
+
+def create_instance():
+    control = Bookingsystem()
+
+
+    # #station
+    # b = Station('Bankok')
+    # r = Station('Rangsit')
+    # c = Station('Chiangmai')
+
+    # # 
+    # start_date = date(2025, 3, 1)
+    # end_date = date(2025, 3, 7)
+    # while start_date <= end_date:
+
+    #     start_date += timedelta(days=1)
+
+
+
+    # #train 7 9 13 51 109
+    # train7 = Train(7, 'ด่วนพิเศษดีเซลราง')
+    # train9 = Train(9, 'ด่วนพิเศษ CNR')
+    # train13 = Train(13, 'ด่วนพิเศษ')
+    # train51 = Train(51, 'ด่วน')
+    # train109 = Train(109, 'เร็ว')
+
+    # #seat
+    # seat1 = Seat(14, 20)
+
+    # # add carriage
+    # car = [Carriage('บนอ.ป.24', 'ชั้น 1', 'ปรับอากาศ', 24, 'นอน'),
+    #         Carriage('บชท.48', 'ชั้น 2', 'พัดลม', 48, 'นั่ง'),
+    #         Carriage('บชส.76', 'ชั้น 3', 'พัดลม', 76, 'นั่ง'),
+    #         Carriage('บนท.ป.40', 'ชั้น 2', 'ปรับอากาศ', 40, 'นอน')]
+
+    # train13.add_carriage(car)
+
+    # #route
+    # route1 = [Route(b, c, '09.05 - 19.30', train7, ),
+    #           Route(b, c, '14.15 - 04.05', train109, ),
+    #           Route(b, c, '18.40 - 07.15', train9, ),
+    #           Route(b, c, '20.05 - 08.40', train13, ),
+    #           Route(b, c, '22.30 - 12.10', train51, )
+    #           ]
+    # # add station
+    # control.add_station(b)
+    # control.add_station(r)
+    # control.add_station(c)
+    # control.add_route(route1)
+ 
+    # # i dont know
+    # a = control.source('Bankok')
+    # p = control.destination('Chiangmai')
+    # # d = control.date('13/07/2568')
+
+    # #search source destination
+    # (control.route( 'Bankok', 'Chiangmai',)) 
+    # (control.route('Chiangmai', 'Bankok', )) # ไม่พบข้อมูล
+    # print('')
+
+    # # select room seat
+    # control.add_train(train13) 
+    # control.select_route()
+    # # print(train13.show_carriage())
+
+
+
+
+create_instance()
+
+
+
+
+
+
+
+
+
+
+
+    # def search_trip(self, source, destination):
+    #     for trip in self.__trip_lst:
+
+    #         found_train = False
+            
+    #         stations = [s.get_station_name for s in trip]  # ดึงชื่อสถานีในเส้นทางนั้นๆ
+
+    #         if source in stations and destination in stations:
+    #             source_index = stations.index(source)
+    #             destination_index = stations.index(destination)
+
+    #             if source_index < destination_index:
+    #                 for data in self.__train_lst:
+    #                     if source == data.get_route.get_source and destination == data.get_route.get_destination:
+    #                         print(f'เวลาออก - เวลาถึง {data.get_route.get_schedule.get_time} ประเภท {data.get_train_type} ขบวนที่ {data.get_train_num} ')# ต้องเอารอบรถไฟมาใส่
+    #                     else:
+    #                         print("ไม่พบเส้นทางที่ต้องการ")
+
+    #             elif source_index > destination_index:
+    #                 for data in self.__train_lst:
+    #                     print(f'เวลาออก - เวลาถึง {data.get_route.get_schedule.get_time} ประเภท {data.get_train_type} ขบวนที่ {data.get_train_num} ')# ต้องเอารอบรถไฟมาใส่
+    #                 else:
+    #                     print("ไม่พบเส้นทางที่ต้องการ")
+
+
+
+    # # show all station for test
+    # def get_all_station(self):
+    #     for i in self.__station_lst:
+    #         print(i.get_station_name)
+
+    # # show all direction for test
+    # def show_direction(self):
+    #     q = 1
+    #     for i in self.__trip_lst:
+    #         if q == 1 :
+    #             print("สายเหนือ-----------------------------")
+    #             q+=1
+    #         elif q == 2:
+    #             print("สายตะวันออกเฉียงเหนือ อุบล-----------------------------")
+    #             q+=1
+    #         elif q == 3:
+    #             print("สายตะวันออกเฉียงเหนือ หนองคาย-----------------------------")
+    #             q+=1
+    #         elif q == 4:
+    #             print("สายใต้-----------------------------")
+    #             q==1
+
+    #         for k in i:
+    #             print(f'{k.get_station_name}')
+
+    
+
