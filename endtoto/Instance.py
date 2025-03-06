@@ -13,7 +13,7 @@ def create_instance(control):
 
     c1 = Station("สถานีกลางกรุงเทพอภิวัฒน์",)
     c2 = Station("ดอนเมือง",)
-    c3 = Station("รังสิต",)
+    c3 = Station("รังสิต",)   
     c4 = Station("อยุธยา",)
     n1 = Station("ลพบุรี",)
     n2 = Station("นครสวรรค์")
@@ -295,6 +295,172 @@ def create_instance(control):
                             (northeast_ubon[13].get_station_name , "09.38"),
                             (northeast_ubon[14].get_station_name , "10.20"),])
     
+    # add schedule northes nongkuy
+    schedule_train75 = Schedule([(northeast_nongkuy[0].get_station_name, "08.45"), 
+                            (northeast_nongkuy[1].get_station_name, "09.00"),
+                            (northeast_nongkuy[2].get_station_name , "09.12"),
+                            (northeast_nongkuy[3].get_station_name, "09.41"),
+                            (northeast_nongkuy[4].get_station_name , "10.28"),
+                            (northeast_nongkuy[5].get_station_name , "11.41"),
+                            (northeast_nongkuy[6].get_station_name , "14.04"),
+                            (northeast_nongkuy[7].get_station_name , "14.39"),
+                            (northeast_nongkuy[8].get_station_name , "15.00"),
+                            (northeast_nongkuy[9].get_station_name , "15.30"),
+                            (northeast_nongkuy[10].get_station_name , "15.55"),
+                            (northeast_nongkuy[11].get_station_name , "16.28"),
+                            (northeast_nongkuy[12].get_station_name , "16.55"),
+                            (northeast_nongkuy[13].get_station_name , "17.30"),])
+    
+    schedule_train25 = Schedule([(northeast_nongkuy[0].get_station_name, "20.25"), 
+                            (northeast_nongkuy[1].get_station_name, "20.40"),
+                            (northeast_nongkuy[2].get_station_name , "20.53"),
+                            (northeast_nongkuy[3].get_station_name, "21.38"),
+                            (northeast_nongkuy[4].get_station_name , "22.28"),
+                            (northeast_nongkuy[5].get_station_name , "23.58"),
+                            (northeast_nongkuy[6].get_station_name , "02.40"),
+                            (northeast_nongkuy[7].get_station_name , "03.14"),
+                            (northeast_nongkuy[8].get_station_name , "03.37"),
+                            (northeast_nongkuy[9].get_station_name , "04.10"),
+                            (northeast_nongkuy[10].get_station_name , "04.37"),
+                            (northeast_nongkuy[11].get_station_name , "05.12"),
+                            (northeast_nongkuy[12].get_station_name , "05.39"),
+                            (northeast_nongkuy[13].get_station_name , "06.25"),])
+    
+    schedule_train133 = Schedule([(northeast_nongkuy[0].get_station_name, "21.25"),
+                            (northeast_nongkuy[1].get_station_name, "22.45"),
+                            (northeast_nongkuy[2].get_station_name , "22.57"),
+                            (northeast_nongkuy[3].get_station_name, "23.41"),
+                            (northeast_nongkuy[4].get_station_name , "00.28"),
+                            (northeast_nongkuy[5].get_station_name , "01.41"),
+                            (northeast_nongkuy[6].get_station_name , "04.04"),
+                            (northeast_nongkuy[7].get_station_name , "04.39"),
+                            (northeast_nongkuy[8].get_station_name , "05.00"),
+                            (northeast_nongkuy[9].get_station_name , "05.30"),
+                            (northeast_nongkuy[10].get_station_name , "05.55"),
+                            (northeast_nongkuy[11].get_station_name , "06.28"),
+                            (northeast_nongkuy[12].get_station_name , "06.55"),
+                            (northeast_nongkuy[13].get_station_name , "07.30"),])
+
+
+    # add schedule south hadyai
+    schedule_train43 = Schedule([(south[0].get_station_name, "07.41"),
+                            (south[1].get_station_name, "07.59"),
+                            (south[2].get_station_name , "08.22"),
+                            (south[3].get_station_name, "09.07"),
+                            (south[4].get_station_name , "09.45"),
+                            (south[5].get_station_name , "10.31"),
+                            (south[6].get_station_name , "13.50"),
+                            (south[7].get_station_name , "16.20"),])
+    
+    schedule_train171 = Schedule([(south[0].get_station_name, "15.105"),
+                            (south[1].get_station_name, "15.21"),
+                            (south[2].get_station_name , "15.41"),
+                            (south[3].get_station_name, "16.04"),
+                            (south[4].get_station_name , "16.24"),
+                            (south[5].get_station_name , "17.50"),
+                            (south[6].get_station_name , "18.44"),
+                            (south[7].get_station_name , "19.06"),
+                            (south[8].get_station_name , "01.11"),
+                            (south[9].get_station_name , "02.59"),
+                            (south[10].get_station_name , "04.39"),
+                            (south[11].get_station_name , "05.50"),])
+    
+    schedule_train37 = Schedule([(south[0].get_station_name, "16.10"),
+                            (south[1].get_station_name, "16.21"),
+                            (south[2].get_station_name , "17.10"),
+                            (south[3].get_station_name, "18.00"),
+                            (south[4].get_station_name , "18.51"),
+                            (south[5].get_station_name , "19.45"),
+                            (south[6].get_station_name , "23.16"),
+                            (south[7].get_station_name , "21.06"),
+                            (south[8].get_station_name , "01.49"),
+                            (south[9].get_station_name , "03.38"),
+                            (south[10].get_station_name , "05.21"),
+                            (south[11].get_station_name , "06.35"),])
+    
+    schedule_train45 = Schedule([(south[0].get_station_name, "16.10"),
+                            (south[1].get_station_name, "16.21"),
+                            (south[2].get_station_name , "16.42"),
+                            (south[3].get_station_name, "18.00"),
+                            (south[4].get_station_name , "18.51"),
+                            (south[5].get_station_name , "19.45"),
+                            (south[6].get_station_name , "23.16"),
+                            (south[7].get_station_name , "21.06"),
+                            (south[8].get_station_name , "01.49"),
+                            (south[9].get_station_name , "03.38"),
+                            (south[10].get_station_name , "05.21"),
+                            (south[11].get_station_name , "06.35"),])
+    
+    
+    schedule_train31 = Schedule([(south[0].get_station_name, "16.50"),
+                            (south[1].get_station_name, "17.01"),
+                            (south[2].get_station_name , "17.22"),
+                            (south[3].get_station_name, "17.48"),
+                            (south[4].get_station_name , "18.37"),
+                            (south[5].get_station_name , "19.30"),
+                            (south[6].get_station_name , "20.20"),
+                            (south[7].get_station_name , "23.55"),
+                            (south[8].get_station_name , "02.20"),
+                            (south[9].get_station_name , "04.08"),
+                            (south[10].get_station_name , "05.51"),
+                            (south[11].get_station_name , "07.05"),])
+    
+
+    schedule_train169 = Schedule([(south[0].get_station_name, "17.30"),
+                            (south[1].get_station_name, "17.41"),
+                            (south[2].get_station_name , "18.02"),
+                            (south[3].get_station_name, "18.29"),
+                            (south[4].get_station_name , "19.23"),
+                            (south[5].get_station_name , "20.20"),
+                            (south[6].get_station_name , "21.20"),
+                            (south[7].get_station_name , "01.25"),
+                            (south[8].get_station_name , "04.06"),
+                            (south[9].get_station_name , "05.59"),
+                            (south[10].get_station_name , "07.53"),
+                            (south[11].get_station_name , "09.18"),])
+    
+    schedule_train83 = Schedule([(south[0].get_station_name, "18.50"),
+                            (south[1].get_station_name, "19.01"),
+                            (south[2].get_station_name , "19.22"),
+                            (south[3].get_station_name, "19.48"),
+                            (south[4].get_station_name , "20.38"),
+                            (south[5].get_station_name , "21.32"),
+                            (south[6].get_station_name , "22.29"),
+                            (south[7].get_station_name , "02.18"),
+                            (south[8].get_station_name , "04.58"),])
+    
+    schedule_train85 = Schedule([(south[0].get_station_name, "19.50"),
+                            (south[1].get_station_name, "20.01"),
+                            (south[2].get_station_name , "20.22"),
+                            (south[3].get_station_name, "20.50"),
+                            (south[4].get_station_name , "21.47"),
+                            (south[5].get_station_name , "22.41"),
+                            (south[6].get_station_name , "23.42"),
+                            (south[7].get_station_name , "03.08"),
+                            (south[8].get_station_name , "06.23"),
+                            (south[9].get_station_name , "08.30"),])
+    
+    schedule_train167 = Schedule([(south[0].get_station_name, "20.30"),
+                            (south[1].get_station_name, "20.41"),
+                            (south[2].get_station_name , "21.02"),
+                            (south[3].get_station_name, "21.30"),
+                            (south[4].get_station_name , "22.24"),
+                            (south[5].get_station_name , "23.19"),
+                            (south[6].get_station_name , "00.18"),
+                            (south[7].get_station_name , "04.20"),
+                            (south[8].get_station_name , "07.16"),
+                            (south[9].get_station_name , "09.34"),])
+    
+    schedule_train39 = Schedule([(south[0].get_station_name, "22.50"),
+                            (south[1].get_station_name, "23.01"),
+                            (south[2].get_station_name , "23.19"),
+                            (south[3].get_station_name, "23.42"),
+                            (south[4].get_station_name , "00.27"),
+                            (south[5].get_station_name , "01.14"),
+                            (south[6].get_station_name , "02.04"),
+                            (south[7].get_station_name , "05.22"),
+])
+    
 # northeast_ubon = [c1, c2, c3, c4, ne1, ne2, ne3, ne4, ne5, ne6, ne7, ne8, ne9, ne10, ne11]
 
 
@@ -367,6 +533,8 @@ def create_instance(control):
     control.add_departure(departure08)
     control.add_departure(departure109)
     control.add_departure(departure102)
+
+    
 
     # carriage_type = control.show_carriage("7")
     # quntity = int(carriage_type["carriage_type"][-2:])
