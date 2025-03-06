@@ -1,0 +1,18 @@
+    # add train northes ubon
+    train21 = Train("21", "ด่วนพิเศษดีเซลราง")
+    train135 = Train("135", "เร็ว")
+    train71 = Train("71", "ด่วน")
+    train134 = Train("134", "เร็ว",)
+    train23 = Train("23", "ด่วนพิเศษ CNR")
+
+    # add train northes 
+    train75 = Train("75", "ด่วน")
+    train25 = Train ("25", "ด่วนพิเศษ CNR")
+    train133 = Train("133", "เร็ว")
+    
+    # add train sourth
+    train171 = Train("171", "เร็ว")
+    train31 = Train("37",  "ด่วนพิเศษ")
+    train45 = Train("45", "ด่วนพิเศษ")
+    train31 = Train("31", "ด่วนพิเศษ CNR")
+    train169 = Train("169", "เร็ว", )
