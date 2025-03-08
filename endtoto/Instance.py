@@ -89,21 +89,36 @@ def create_instance(control):
                             (north[11].get_station_name , "19.14"),
                             (north[12].get_station_name , "19.30")])
     
-    schedule_train8 = Schedule([(north[12].get_station_name , "08.50"), 
-                            (north[11].get_station_name , "09.04"),
-                            (north[10].get_station_name , "09.46"),
-                            (north[9].get_station_name , "10.38"),
-                            (north[8].get_station_name , "12.38"),
-                            (north[7].get_station_name , "13.25"),
-                            (north[6].get_station_name , "14.34"),
-                            (north[5].get_station_name , "16.21"),
-                            (north[4].get_station_name , "17.26"),
-                            (north[3].get_station_name , "18.05"),
-                            (north[2].get_station_name , "18.30"),
-                            (north[1].get_station_name , "18.40"),
-                            (north[0].get_station_name , "18.55")])
+    schedule_train09 = Schedule([(north[0].get_station_name, "18.40"), 
+                            (north[1].get_station_name, "18.55"),
+                            (north[2].get_station_name , "19.06"),
+                            (north[3].get_station_name, "19.44"),
+                            (north[4].get_station_name , "20.41"),
+                            (north[5].get_station_name , "22.14"),
+                            (north[6].get_station_name , "00.15"),
+                            (north[7].get_station_name , "01.44"),
+                            (north[8].get_station_name , "02.48"),
+                            (north[9].get_station_name , "04.57"),
+                            (north[10].get_station_name , "06.01"),
+                            (north[11].get_station_name , "06.50"),
+                            (north[12].get_station_name , "07.15")])
     
 
+    schedule_train13 = Schedule([(north[0].get_station_name, "20.05"), 
+                            (north[1].get_station_name, "20.20"),
+                            (north[2].get_station_name , "20.31"),
+                            (north[3].get_station_name, "21.06"),
+                            (north[4].get_station_name , "21.58"),
+                            (north[5].get_station_name , "23.28"),
+                            (north[6].get_station_name , "01.47"),
+                            (north[7].get_station_name , "03.11"),
+                            (north[8].get_station_name , "04.16"),
+                            (north[9].get_station_name , "06.30"),
+                            (north[10].get_station_name , "07.32"),
+                            (north[11].get_station_name , "08.19"),
+                            (north[12].get_station_name , "08.40")])
+    
+    
     schedule_train109 = Schedule([(north[0].get_station_name, "14.15"), 
                             (north[1].get_station_name, "14.30"),
                             (north[2].get_station_name , "14.42"),
@@ -119,48 +134,6 @@ def create_instance(control):
                             (north[12].get_station_name , "04.05")])
     
 
-    schedule_train102 = Schedule([(north[12].get_station_name , "06.30"), 
-                            (north[11].get_station_name , "06.48"),
-                            (north[10].get_station_name , "07.35"),
-                            (north[9].get_station_name , "08.27"),
-                            (north[8].get_station_name , "10.43"),
-                            (north[7].get_station_name , "11.37"),
-                            (north[6].get_station_name , "13.16"),
-                            (north[5].get_station_name , "15.53"),
-                            (north[4].get_station_name , "18.05"),
-                            (north[3].get_station_name , "19.14"),
-                            (north[2].get_station_name , "19.55"),
-                            (north[1].get_station_name , "20.08"),
-                            (north[0].get_station_name , "20.25")])
-    
-    schedule_train09 = Schedule([(north[0].get_station_name, "18.40"), 
-                            (north[1].get_station_name, "18.55"),
-                            (north[2].get_station_name , "19.06"),
-                            (north[3].get_station_name, "19.44"),
-                            (north[4].get_station_name , "20.41"),
-                            (north[5].get_station_name , "22.14"),
-                            (north[6].get_station_name , "00.15"),
-                            (north[7].get_station_name , "01.44"),
-                            (north[8].get_station_name , "02.48"),
-                            (north[9].get_station_name , "04.57"),
-                            (north[10].get_station_name , "06.01"),
-                            (north[11].get_station_name , "06.50"),
-                            (north[12].get_station_name , "07.15")])
-    
-    schedule_train13 = Schedule([(north[0].get_station_name, "20.05"), 
-                            (north[1].get_station_name, "20.20"),
-                            (north[2].get_station_name , "20.31"),
-                            (north[3].get_station_name, "21.06"),
-                            (north[4].get_station_name , "21.58"),
-                            (north[5].get_station_name , "23.28"),
-                            (north[6].get_station_name , "01.47"),
-                            (north[7].get_station_name , "03.11"),
-                            (north[8].get_station_name , "04.16"),
-                            (north[9].get_station_name , "06.30"),
-                            (north[10].get_station_name , "07.32"),
-                            (north[11].get_station_name , "08.19"),
-                            (north[12].get_station_name , "08.40")])
-    
     schedule_train51 = Schedule([(north[0].get_station_name, "20.30"), 
                             (north[1].get_station_name, "22.45"),
                             (north[2].get_station_name , "22.58"),
@@ -174,6 +147,27 @@ def create_instance(control):
                             (north[10].get_station_name , "11.00"),
                             (north[11].get_station_name , "11.48"),
                             (north[12].get_station_name , "12.10")])
+    
+    schedule_train111 = Schedule([(north[0].get_station_name, "07.30"), 
+                            (north[1].get_station_name, "07.45"),
+                            (north[2].get_station_name , "07.57"),
+                            (north[3].get_station_name, "08.27"),
+                            (north[4].get_station_name , "09.42"),
+                            (north[5].get_station_name , "11.21"),
+                            (north[6].get_station_name , "13.43"),
+                            (north[7].get_station_name , "15.27"),
+                            (north[8].get_station_name , "16.30"),])
+    
+    schedule_train107 = Schedule([(north[0].get_station_name, "20.45"),
+                            (north[1].get_station_name, "21.00"),
+                            (north[2].get_station_name , "02.30"),
+                            (north[3].get_station_name , "21.47"),
+                            (north[4].get_station_name, "22.38"),
+                            (north[5].get_station_name , "00.04"),
+                            (north[6].get_station_name , "02.36"),
+                            (north[7].get_station_name , "04.08"),
+                            (north[8].get_station_name , "05.15")])
+    
     
     # add schedule northes ubon
     schedule_train21 = Schedule([(northeast_ubon[0].get_station_name, "06.10"), 
@@ -243,23 +237,7 @@ def create_instance(control):
                             (northeast_ubon[14].get_station_name , "06.15"),
                             ])
     
-    schedule_train139 = Schedule([(northeast_ubon[0].get_station_name, "19.25"), 
-                            (northeast_ubon[1].get_station_name, "19.39"),
-                            (northeast_ubon[2].get_station_name , "19.51"),
-                            (northeast_ubon[3].get_station_name , "20.25"),
-                            (northeast_ubon[4].get_station_name, "21.09"),
-                            (northeast_ubon[5].get_station_name , "22.46"),
-                            (northeast_ubon[6].get_station_name , "00.07"),
-                            (northeast_ubon[7].get_station_name , "01.47"),
-                            (northeast_ubon[8].get_station_name , "02.22"),
-                            (northeast_ubon[9].get_station_name , "03.15"),
-                            (northeast_ubon[10].get_station_name , "03.53"),
-                            (northeast_ubon[11].get_station_name , "04.44"),
-                            (northeast_ubon[12].get_station_name , "05.07"),
-                            (northeast_ubon[13].get_station_name , "05.38"),
-                            (northeast_ubon[14].get_station_name , "06.15"),
-                            ])
-    
+
 
     schedule_train23 = Schedule([(northeast_ubon[0].get_station_name, "21.05"), 
                             (northeast_ubon[1].get_station_name, "21.20"),
@@ -281,7 +259,7 @@ def create_instance(control):
 
     schedule_train141 = Schedule([(northeast_ubon[0].get_station_name, "23.05"), 
                             (northeast_ubon[1].get_station_name, "23.21"),
-                            (northeast_ubon[2].get_station_name , "23.35")
+                            (northeast_ubon[2].get_station_name , "23.35"),
                             (northeast_ubon[3].get_station_name , "00.16"),
                             (northeast_ubon[4].get_station_name , "00.58"),
                             (northeast_ubon[5].get_station_name, "02.54"),
@@ -458,10 +436,38 @@ def create_instance(control):
                             (south[4].get_station_name , "00.27"),
                             (south[5].get_station_name , "01.14"),
                             (south[6].get_station_name , "02.04"),
-                            (south[7].get_station_name , "05.22"),
-])
+                            (south[7].get_station_name , "05.22"),])
     
-# northeast_ubon = [c1, c2, c3, c4, ne1, ne2, ne3, ne4, ne5, ne6, ne7, ne8, ne9, ne10, ne11]
+
+    # add schedule back north to bangkok
+    schedule_train8 = Schedule([(north[12].get_station_name , "08.50"), 
+                            (north[11].get_station_name , "09.04"),
+                            (north[10].get_station_name , "09.46"),
+                            (north[9].get_station_name , "10.38"),
+                            (north[8].get_station_name , "12.38"),
+                            (north[7].get_station_name , "13.25"),
+                            (north[6].get_station_name , "14.34"),
+                            (north[5].get_station_name , "16.21"),
+                            (north[4].get_station_name , "17.26"),
+                            (north[3].get_station_name , "18.05"),
+                            (north[2].get_station_name , "18.30"),
+                            (north[1].get_station_name , "18.40"),
+                            (north[0].get_station_name , "18.55")])
+    
+    schedule_train102 = Schedule([(north[12].get_station_name , "06.30"), 
+                            (north[11].get_station_name , "06.48"),
+                            (north[10].get_station_name , "07.35"),
+                            (north[9].get_station_name , "08.27"),
+                            (north[8].get_station_name , "10.43"),
+                            (north[7].get_station_name , "11.37"),
+                            (north[6].get_station_name , "13.16"),
+                            (north[5].get_station_name , "15.53"),
+                            (north[4].get_station_name , "18.05"),
+                            (north[3].get_station_name , "19.14"),
+                            (north[2].get_station_name , "19.55"),
+                            (north[1].get_station_name , "20.08"),
+                            (north[0].get_station_name , "20.25")])
+    
 
 
     # add train north
@@ -470,13 +476,16 @@ def create_instance(control):
     train13 = Train("13", "ด่วนพิเศษ")
     train109 = Train("109", "เร็ว",)
     train51 = Train("51", "ด่วน",)
+    train111 = Train("111", "เร็ว",)
+    train107 = Train("107", "เร็ว",)
 
     # add train northes ubon
     train21 = Train("21", "ด่วนพิเศษดีเซลราง")
     train135 = Train("135", "เร็ว")
     train71 = Train("71", "ด่วน")
-    train134 = Train("134", "เร็ว",)
+    train139 = Train("139", "เร็ว",)
     train23 = Train("23", "ด่วนพิเศษ CNR")
+    train141 = Train("141", "เร็ว",)
 
     # add train northes 
     train75 = Train("75", "ด่วน")
@@ -484,11 +493,17 @@ def create_instance(control):
     train133 = Train("133", "เร็ว")
     
     # add train sourth
+    train43 = Train("43", "ด่วนพิเศษดีเซลราง")
     train171 = Train("171", "เร็ว")
-    train31 = Train("37",  "ด่วนพิเศษ")
+    train37 = Train("37",  "ด่วนพิเศษ")
     train45 = Train("45", "ด่วนพิเศษ")
-    train31 = Train("31", "ด่วนพิเศษ CNR")
+    train31 = Train("31",  "ด่วนพิเศษ")
     train169 = Train("169", "เร็ว", )
+    train83 = Train("83", "ด่วน")
+    train85 = Train("85", "ด่วน", )
+    train167 = Train("167", "เร็ว", )
+    train39 = Train("39", "ด่วนพิเศษดีเซลราง", )
+    
 
     # back train
     train102 = Train("102", "เร็ว")
@@ -502,6 +517,7 @@ def create_instance(control):
     carrige109_1 = Carriage("บชส.76", "3", "พัดลม", "นั่ง")
     carrige109_2 = Carriage("บนท.ป.40", "2", "ปรับอากาศ", "นั่ง")
 
+    # leg back
     carrige8 = Carriage("กซข.ป.76", "2", "ปรับอากาศ", "นั่ง")
 
     carrige102 = Carriage("บชท.48", "2", "พัดลม", "นั่ง")
@@ -510,29 +526,130 @@ def create_instance(control):
 
 
 
-    # add carrige in train
+    # add carrige in train leg go
     train7.add_carriage(carrige7)
 
     train109.add_carriage(carrige109)
     train109.add_carriage(carrige109_1)
     train109.add_carriage(carrige109_2)
 
+    # add carrige in train leg back
     train8.add_carriage(carrige8)
-
     train102.add_carriage(carrige102)
     train102.add_carriage(carrige102_1)
 
 
-    #
+    # add departure north เลขคู่คือ ขากลับ เลขคี่คือ ขาไป
+    departure111 = Departure(train111, schedule_train111,)
+
     departure07 = Departure(train7, schedule_train07,)
     departure08 = Departure(train8, schedule_train8,)
+
     departure109 = Departure(train109, schedule_train109,)
     departure102 = Departure(train102, schedule_train102,)
 
+    departure09 = Departure(train9, schedule_train09,)
+
+    departure13 = Departure(train13, schedule_train13,)
+
+    departure107 = Departure(train107, schedule_train107,)
+
+    departure51 = Departure(train51, schedule_train51,)
+
+    # add departure northes ubon
+    departure21 = Departure(train21, schedule_train21,)
+
+    departure135 = Departure(train135, schedule_train135,)
+
+    departure71 = Departure(train71, schedule_train71,)
+
+    departure139 = Departure(train139, schedule_train139,)
+
+    departure23 = Departure(train23, schedule_train23,)
+
+    departure141 = Departure(train141, schedule_train141,)
+
+    # add departure northes nongkuy
+    departure75 = Departure(train75, schedule_train75,)
+    departure25 = Departure(train25, schedule_train25,)
+    departure133 = Departure(train133, schedule_train133,)
+
+
+    # add departure south
+    departure43 = Departure(train43, schedule_train43,)
+
+    departure171 = Departure(train171, schedule_train171,)
+
+    departure37 = Departure(train37, schedule_train37,)
+
+    departure45 = Departure(train45, schedule_train45,)
+
+    departure31 = Departure(train31, schedule_train31,)
+
+    departure169 = Departure(train169, schedule_train169,)
+
+    departure83 = Departure(train83, schedule_train83,)
+
+    departure85 = Departure(train85, schedule_train85,)
+
+    departure167 = Departure(train167, schedule_train167,)
+
+    departure39 = Departure(train39, schedule_train39,)
+
+    
+
+    # add departure in control north
+    control.add_departure(departure111)
+
     control.add_departure(departure07)
     control.add_departure(departure08)
+
     control.add_departure(departure109)
     control.add_departure(departure102)
+
+    control.add_departure(departure09)
+
+    control.add_departure(departure13)
+
+    control.add_departure(departure107)
+
+    control.add_departure(departure51)
+
+    # add departure in control northes ubon
+    control.add_departure(departure21)
+    control.add_departure(departure135)
+    control.add_departure(departure71)
+    control.add_departure(departure139)
+    control.add_departure(departure23)
+    control.add_departure(departure141)
+
+    # add departure in control northes nongkuy
+    control.add_departure(departure75)
+    control.add_departure(departure25)
+    control.add_departure(departure133)
+
+
+    # add departure in control south
+    control.add_departure(departure43)
+
+    control.add_departure(departure171)
+
+    control.add_departure(departure37)
+
+    control.add_departure(departure45)
+
+    control.add_departure(departure31)
+
+    control.add_departure(departure169)
+
+    control.add_departure(departure83)
+
+    control.add_departure(departure85)
+
+    control.add_departure(departure167)
+
+    control.add_departure(departure39)
+
 
     
 
