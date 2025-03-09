@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>รายละเอียดขบวนรถไฟ</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        table {
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>รายละเอียดขบวนรถไฟ</h1>
+    <div id="details"></div>
+
+    <script>
+        // ดึง `train_num` จาก URL
+        const params = new URLSearchParams(window.location.search);
+        const trainNum = params.get('train_num');
+    
+        // ฟังก์ชันโหลดข้อมูลรายละเอียดโบกี้ของขบวนรถไฟ
+        async function loadTrainDetails() {
+            try {
+                const response = await fetch(`http://127.0.0.1:8000/train-details/${trainNum}`);
+                if (!response.ok) throw new Error("ไม่พบข้อมูลขบวนรถไฟ");
+    
+                const data = await response.json();
+                console.log("Train Details:", data);
+    
+                const detailsDiv = document.getElementById("details");
+                if (data.carriages && data.carriages.length > 0) {
+                    detailsDiv.innerHTML = `
+                        <h2>รายละเอียดของขบวน ${trainNum}</h2>
+                        <table>
+                            <tr>
+                                <th>ประเภทโบกี้</th>
+                                <th>ประเภทที่นั่ง</th>
+                                <th>ประเภทห้อง</th>
+                                <th>ชั้น</th>
+                                <th>ราคา</th>
+                                <th>เลือกที่นั่ง</th>
+                            </tr>
+                            ${data.carriages.map(carriage => `
+                                <tr>
+                                    <td>${carriage.carrige_type}</td>
+                                    <td>${carriage.carrige_seat}</td>
+                                    <td>${carriage.room_type}</td>
+                                    <td>${carriage.floor}</td>
+                                    <td>${carriage.price.toFixed(2)}</td>
+                                    <td><button onclick="selectSeat('${trainNum}', '${carriage.carrige_type}', '${carriage.carrige_seat}', '${carriage.price}')">เลือก</button></td>
+                                </tr>
+                            `).join('')}
+                        </table>
+                    `;
+                } else {
+                    detailsDiv.innerHTML = `<p>ไม่พบข้อมูลโบกี้สำหรับขบวนรถไฟหมายเลข ${trainNum}</p>`;
+                }
+            } catch (error) {
+                console.error("Error loading train details:", error);
+                document.getElementById("details").innerHTML = `<p>เกิดข้อผิดพลาดในการโหลดข้อมูล: ${error.message}</p>`;
+            }
+        }
+        function selectSeat(trainNum, carrigeType, seatType, price) {
+    // ดึง passengerCount จาก URL
+    const passengerCount = params.get('passengerCount');
+
+    // สร้าง URL พร้อม Query Parameters
+    const url = `select_seat.html?trainNum=${trainNum}&carrigeType=${encodeURIComponent(carrigeType)}&seatType=${encodeURIComponent(seatType)}&price=${price}&passengerCount=${passengerCount}`;
+
+    // เปลี่ยนเส้นทางไปยังหน้า select_seat.html
+    window.location.href = url;
+}
+
+
+        
+    
+        // เรียกฟังก์ชันโหลดรายละเอียด
+        loadTrainDetails();
+    </script>
+    
+</body>
+</html>

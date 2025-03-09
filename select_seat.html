@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>เลือกที่นั่ง</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .seat {
+            margin: 5px;
+            padding: 10px;
+            background-color: green;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .seat.booked {
+            background-color: red;
+            cursor: not-allowed;
+        }
+        .seat.selected {
+            background-color: blue;
+        }
+        table {
+            margin: 20px auto;
+            border-collapse: collapse;
+            width: 80%;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .buttons {
+            margin-top: 20px;
+            text-align: center;
+        }
+        button {
+            cursor: pointer;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            margin: 5px;
+        }
+        button.next {
+            background-color: green;
+            color: white;
+        }
+        button.back {
+            background-color: gray;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h1>เลือกที่นั่ง</h1>
+    <div id="seat-info"></div>
+    <p>ที่นั่งที่เลือก: <span id="selected-count">0</span>/<span id="max-passenger"></span></p>
+    <div id="seat-container"></div>
+
+    <h2>สรุปรายการจอง</h2>
+    <div id="booking-summary"></div>
+
+    <div class="buttons">
+        <button class="back" onclick="goBack()">ย้อนกลับ</button>
+        <button class="next" onclick="goNext()">ถัดไป</button>
+    </div>
+
+    <script>
+        // ดึง Query Parameters จาก URL
+        const params = new URLSearchParams(window.location.search);
+        const trainNum = params.get('trainNum');
+        const carrigeType = params.get('carrigeType');
+        const seatType = params.get('seatType');
+        const price = parseFloat(params.get('price'));
+        const passengerCount = parseInt(params.get('passengerCount'), 10);
+
+        if (isNaN(passengerCount) || passengerCount < 1) {
+            alert("ข้อผิดพลาด: จำนวนผู้โดยสารไม่ถูกต้อง");
+            window.history.back(); // กลับไปหน้าก่อนหน้า
+        }
+
+        document.getElementById('seat-info').innerHTML = `
+            <p>ขบวน: ${trainNum}</p>
+            <p>โบกี้: ${carrigeType}</p>
+            <p>ประเภทที่นั่ง: ${seatType}</p>
+            <p>ราคา: ${price} บาท</p>
+        `;
+        document.getElementById('max-passenger').textContent = passengerCount;
+
+        let selectedSeats = []; // เก็บรายการที่นั่งที่ถูกเลือก
+
+        const bookings = []; // เก็บข้อมูลการจอง
+
+        // ฟังก์ชันโหลดที่นั่ง
+        async function loadSeats() {
+            try {
+                const response = await fetch(`http://127.0.0.1:8000/seats/${trainNum}/${carrigeType}`);
+                if (!response.ok) throw new Error("ไม่พบข้อมูลที่นั่ง");
+
+                const data = await response.json();
+                const seatContainer = document.getElementById('seat-container');
+
+                data.seats.forEach(seat => {
+                    const btn = document.createElement('button');
+                    btn.textContent = `Seat ${seat.seat_id}`;
+                    btn.className = seat.status === "release" ? "seat" : "seat booked";
+                    btn.disabled = seat.status === "booked";
+                    btn.onclick = () => toggleSeatSelection(seat.seat_id);
+                    seatContainer.appendChild(btn);
+                });
+            } catch (error) {
+                console.error("Error loading seats:", error);
+                document.getElementById('seat-container').innerHTML = `<p>เกิดข้อผิดพลาด: ${error.message}</p>`;
+            }
+        }
+
+        // ฟังก์ชันเลือก/ยกเลิกการเลือกที่นั่ง
+        function toggleSeatSelection(seatId) {
+            if (selectedSeats.includes(seatId)) {
+                selectedSeats = selectedSeats.filter(id => id !== seatId);
+                bookings.splice(bookings.findIndex(booking => booking.seat === seatId), 1); // ลบจากการจอง
+            } else {
+                if (selectedSeats.length >= passengerCount) {
+                    alert(`ไม่สามารถเลือกเกิน ${passengerCount} ที่นั่งได้!`);
+                    return;
+                }
+                selectedSeats.push(seatId);
+                bookings.push({
+                    order: bookings.length + 1,
+                    name: `ผู้โดยสาร ${bookings.length + 1}`,
+                    seatType: seatType,
+                    coach: carrigeType,
+                    seat: seatId,
+                    price: price
+                });
+            }
+
+            document.getElementById('selected-count').textContent = selectedSeats.length;
+            updateSeatUI();
+            renderBookingSummary();
+        }
+
+        // ฟังก์ชันอัปเดต UI ที่นั่ง
+        function updateSeatUI() {
+            const buttons = document.querySelectorAll('.seat');
+            buttons.forEach(button => {
+                const seatId = parseInt(button.textContent.replace('Seat ', ''), 10);
+                if (selectedSeats.includes(seatId)) {
+                    button.classList.add('selected');
+                } else {
+                    button.classList.remove('selected');
+                }
+            });
+        }
+
+        // ฟังก์ชันแสดงสรุปการจอง
+        function renderBookingSummary() {
+            const bookingSummary = document.getElementById("booking-summary");
+
+            if (bookings.length === 0) {
+                bookingSummary.innerHTML = "<p>ไม่มีการจองที่จะแสดง</p>";
+                return;
+            }
+
+            bookingSummary.innerHTML = `
+                <table>
+                    <tr>
+                        <th>ลำดับ</th>
+                        <th>ชื่อผู้โดยสาร</th>
+                        <th>ประเภทที่นั่ง</th>
+                        <th>โบกี้</th>
+                        <th>ที่นั่ง</th>
+                        <th>ราคา (บาท)</th>
+                        <th>ลบ</th>
+                    </tr>
+                    ${bookings.map(booking => `
+                        <tr>
+                            <td>${booking.order}</td>
+                            <td>${booking.name}</td>
+                            <td>${booking.seatType}</td>
+                            <td>${booking.coach}</td>
+                            <td>${booking.seat}</td>
+                            <td>${booking.price.toFixed(2)}</td>
+                            <td><button class="delete" onclick="deleteBooking(${booking.order})">ลบ</button></td>
+                        </tr>
+                    `).join('')}
+                </table>
+            `;
+        }
+
+        // ฟังก์ชันลบรายการจอง
+        function deleteBooking(order) {
+            const index = bookings.findIndex(booking => booking.order === order);
+            if (index !== -1) {
+                const seatId = bookings[index].seat;
+                selectedSeats = selectedSeats.filter(id => id !== seatId); // ลบออกจากรายการที่นั่ง
+                bookings.splice(index, 1); // ลบข้อมูลการจอง
+                renderBookingSummary();
+                updateSeatUI();
+            }
+        }
+
+        // ฟังก์ชันย้อนกลับ
+        function goBack() {
+            window.history.back();
+        }
+
+        // ฟังก์ชันไปหน้าถัดไป
+        function goNext() {
+            if (bookings.length === 0) {
+                alert("กรุณาเลือกที่นั่งก่อนดำเนินการต่อ");
+                return;
+            }
+            const url = `login_info.html`;
+            window.location.href = url;
+        }
+
+        // โหลดที่นั่งเมื่อหน้าโหลด
+        loadSeats();
+    </script>
+</body>
+</html>

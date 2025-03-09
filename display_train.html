@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ผลการค้นหา</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        table {
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        button {
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>ผลการค้นหา</h1>
+    <div id="result"></div>
+
+    <script>
+        // รับพารามิเตอร์จาก URL
+        const params = new URLSearchParams(window.location.search);
+        const source = params.get('source');
+        const destination = params.get('destination');
+        const date = params.get('date');
+        const passengerCount = params.get('passengerCount'); // ดึงจำนวนผู้โดยสารจาก URL
+
+        // ฟังก์ชันโหลดข้อมูลรถไฟจาก API
+        async function loadTrainResults() {
+            try {
+                // เรียก API สำหรับค้นหาเที่ยวรถไฟ
+                const response = await fetch(`http://127.0.0.1:8000/search?source=${source}&destination=${destination}&date=${date}`);
+                if (!response.ok) throw new Error("การเรียก API ผิดพลาด");
+
+                const data = await response.json();
+
+                const resultDiv = document.getElementById("result");
+
+                if (data.departures && data.departures.length > 0) {
+                    resultDiv.innerHTML = `
+                        <h2>เที่ยวรถไฟจาก ${source} ไป ${destination} วันที่ ${date}</h2>
+                        <table>
+                            <tr>
+                                <th>เวลาออก</th>
+                                <th>เวลาถึง</th>
+                                <th>ขบวนรถไฟ</th>
+                                <th>ประเภท</th>
+                                <th>รายละเอียด</th>
+                            </tr>
+                            ${data.departures.map(train => `
+                                <tr>
+                                    <td>${train.departure_time}</td>
+                                    <td>${train.arrival_time}</td>
+                                    <td>${train.train_num}</td>
+                                    <td>${train.train_type}</td>
+                                    <td><button onclick="goToDetails('${train.train_num}')">เลือก</button></td>
+                                </tr>
+                            `).join('')}
+                        </table>
+                    `;
+                } else {
+                    resultDiv.innerHTML = `<p>ไม่พบเที่ยวรถไฟ</p>`;
+                }
+            } catch (error) {
+                console.error("Error loading train results:", error);
+                document.getElementById("result").innerHTML = `<p>เกิดข้อผิดพลาดในการโหลดข้อมูล</p>`;
+            }
+        }
+
+        // ฟังก์ชันเปลี่ยนหน้าไปที่ detail.html
+        function goToDetails(trainNum) {
+            console.log("Redirecting to detail.html with train_num:", trainNum); // Debug
+            window.location.href = `detail.html?train_num=${trainNum}&passengerCount=${passengerCount}`;
+        }
+
+        // เรียกฟังก์ชันโหลดผลลัพธ์
+        loadTrainResults();
+    </script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ระบบจองตั๋วรถไฟ</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .form-container {
+            margin: 20px auto;
+            width: 50%;
+            text-align: center;
+        }
+        select, input, button {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center;">ระบบจองตั๋วรถไฟ</h1>
+
+    <div class="form-container">
+        <form id="search-form">
+            <label>สถานีต้นทาง:</label>
+            <select id="source"></select><br>
+            <label>สถานีปลายทาง:</label>
+            <select id="destination"></select><br>
+            <label>วันที่เดินทาง:</label>
+            <input type="date" id="date"><br>
+            <label>จำนวนผู้โดยสาร:</label>
+            <select id="passenger-count">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+            </select><br>
+            <button type="button" onclick="searchTrain()">ค้นหา</button>
+        </form>
+    </div>
+
+    <div id="result"></div>
+
+    <script>
+        // ดึงข้อมูลสถานีจาก API และเพิ่มใน dropdown
+        async function loadStations() {
+            const response = await fetch("http://127.0.0.1:8000/stations");
+            const data = await response.json();
+            const sourceSelect = document.getElementById("source");
+            const destinationSelect = document.getElementById("destination");
+
+            // เติมข้อมูลสถานีลงใน select
+            data.stations.forEach(station => {
+                const optionSource = document.createElement("option");
+                optionSource.value = station;
+                optionSource.textContent = station;
+                sourceSelect.appendChild(optionSource);
+
+                const optionDestination = document.createElement("option");
+                optionDestination.value = station;
+                optionDestination.textContent = station;
+                destinationSelect.appendChild(optionDestination);
+            });
+        }
+
+        // ฟังก์ชันสำหรับค้นหารถไฟ
+        async function searchTrain() {
+    const source = document.getElementById("source").value;
+    const destination = document.getElementById("destination").value;
+    const date = document.getElementById("date").value;
+    const passengerCount = document.getElementById("passenger-count").value;
+
+    // สร้าง URL พร้อมพารามิเตอร์สำหรับ display_train.html
+    const searchURL = `display_train.html?source=${source}&destination=${destination}&date=${date}&passengerCount=${passengerCount}`;
+    
+    // เปลี่ยนหน้าไปยัง `display_train.html`
+    window.location.href = searchURL;
+}
+
+        // โหลดข้อมูลสถานีเมื่อเปิดหน้าเว็บ
+        loadStations();
+    </script>
+</body>
+</html>
