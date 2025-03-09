@@ -330,7 +330,7 @@ def create_instance(control):
                             (south[6].get_station_name , "13.50"),
                             (south[7].get_station_name , "16.20"),])
     
-    schedule_train171 = Schedule([(south[0].get_station_name, "15.105"),
+    schedule_train171 = Schedule([(south[0].get_station_name, "15.10"),
                             (south[1].get_station_name, "15.21"),
                             (south[2].get_station_name , "15.41"),
                             (south[3].get_station_name, "16.04"),

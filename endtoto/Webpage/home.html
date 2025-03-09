@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ระบบจองตั๋วรถไฟ</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .navbar {
+            background-color: white;
+            text-align: center;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+        }
+        .navbar a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: black;
+            font-size: 16px;
+        }
+        .welcome-message {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .form-container {
+            width: 80%;
+            margin: 0 auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        td, th {
+            padding: 10px;
+            text-align: left;
+        }
+        .footer {
+            background-color: white;
+            text-align: center;
+            padding: 10px 0;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <div class="navbar">
+        <a href="https://facebook.com">Facebook</a>
+        <a href="https://youtube.com">YouTube</a>
+        <a href="/login">เข้าสู่ระบบ</a>
+        <a href="/member_register">สมัครสมาชิก</a>
+    </div>
+
+    <!-- Welcome Message -->
+    <div class="welcome-message">
+        <h1>ยินดีต้อนรับสู่เว็บไซต์ของเรา</h1>
+    </div>
+
+    <!-- Search Form -->
+    <div class="form-container">
+        <form method="post" action="/display-train">
+            <table>
+                <tr>
+                    <td><label for="source">สถานีต้นทาง:</label></td>
+                    <td>
+                        <select id="source" name="source">
+                            <option value="สถานีกลางกรุงเทพอภิวัฒน์">สถานีกลางกรุงเทพอภิวัฒน์</option>
+                            <option value="เชียงใหม่">เชียงใหม่</option>
+                            <!-- เพิ่มสถานีอื่น ๆ -->
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="destination">สถานีปลายทาง:</label></td>
+                    <td>
+                        <select id="destination" name="destination">
+                            <option value="สถานีกลางกรุงเทพอภิวัฒน์">สถานีกลางกรุงเทพอภิวัฒน์</option>
+                            <option value="เชียงใหม่">เชียงใหม่</option>
+                            <!-- เพิ่มสถานีอื่น ๆ -->
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="date">วันที่เดินทาง:</label></td>
+                    <td><input type="date" id="date" name="date"></td>
+                </tr>
+                <tr>
+                    <td><label for="passenger">จำนวนผู้โดยสาร:</label></td>
+                    <td>
+                        <select id="passenger" name="passenger">
+                            <option value="1">จำนวนผู้โดยสาร 1</option>
+                            <option value="2">จำนวนผู้โดยสาร 2</option>
+                            <option value="3">จำนวนผู้โดยสาร 3</option>
+                            <option value="4">จำนวนผู้โดยสาร 4</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="text-align: center;">
+                        <button type="submit">ค้นหา</button>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>KMITL: สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง</p>
+        <p>เบอร์โทร 000-000-0000</p>
+        <p>อีเมล์ xxxxxxxx@kmitl.ac.th</p>
+    </div>
+</body>
+</html>

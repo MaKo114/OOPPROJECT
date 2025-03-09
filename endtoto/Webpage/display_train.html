@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ผลการค้นหา</title>
+</head>
+<body>
+    <h1>ผลการค้นหาเที่ยวรถไฟจาก {{ source }} ไป {{ destination }}</h1>
+    {% if result %}
+    <table border="1">
+        <tr>
+            <th>เวลาออก</th>
+            <th>เวลาถึง</th>
+            <th>ขบวน</th>
+            <th>ประเภท</th>
+        </tr>
+        {% for train in result %}
+        <tr>
+            <td>{{ train.departure_time }}</td>
+            <td>{{ train.arrival_time }}</td>
+            <td>{{ train.train_num }}</td>
+            <td>{{ train.train_type }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% else %}
+    <p>ไม่พบเที่ยวรถไฟที่ต้องการ</p>
+    {% endif %}
+</body>
+</html>
